@@ -1,0 +1,21 @@
+alertmanager:
+  enabled: false
+
+grafana:
+  enabled: false
+
+kubeStateMetrics:
+  enabled: false
+
+nodeExporter:
+  enabled: false
+
+pushgateway:
+  enabled: false
+
+server:
+  remoteWrite:
+    - url: "${prometheusRemoteUrl}"
+      basic_auth:
+        username: "${prometheusRemoteUsername}"
+        password: "${prometheusRemotePassword}"
