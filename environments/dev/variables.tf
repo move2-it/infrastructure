@@ -1,5 +1,5 @@
 variable "akeyless_api_gateway_address" {
-  type = string
+  type    = string
   default = "https://api.akeyless.io"
 }
 

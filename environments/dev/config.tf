@@ -5,6 +5,14 @@ terraform {
       version = "1.1.15"
     }
   }
+
+  cloud {
+    organization = "move2-it"
+
+    workspaces {
+      name = "move2-it"
+    }
+  }
 }
 
 provider "akeyless" {
