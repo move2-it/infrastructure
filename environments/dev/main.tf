@@ -23,7 +23,7 @@ module "promtail" {
 module "prometheus" {
   source = "../../modules/prometheus"
 
-  prometheusRemoteUrl = data.akeyless_static_secret.prometheus_remote_url
+  prometheusRemoteUrl      = data.akeyless_static_secret.prometheus_remote_url
   prometheusRemoteUsername = data.akeyless_static_secret.prometheus_remote_username
   prometheusRemotePassword = data.akeyless_static_secret.prometheus_remote_password
 }
