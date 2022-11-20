@@ -26,6 +26,7 @@ provider "akeyless" {
 
 provider "helm" {
   kubernetes {
-    config_path = "~/.kube/config"
+    host = var.kubernetes_url
+    insecure = true
   }
 }
