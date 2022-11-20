@@ -7,21 +7,14 @@ terraform {
   }
 }
 
-data "template_file" "this" {
-  template = file("${path.module}/template/config.yml")
-
-  vars = {
-    lokiRemoteUrl = var.lokiRemoteUrl
-  }
-}
-
 resource "helm_release" "this" {
   name       = "promtail"
   repository = "https://grafana.github.io/helm-charts"
   chart      = "promtail"
   version    = "6.6.0"
 
-  values = [
-    data.template_file.this.rendered
-  ]
+  set_sensitive {
+    name  = "config.clients[0].url"
+    value = var.lokiRemoteUrl
+  }
 }

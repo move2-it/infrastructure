@@ -12,10 +12,3 @@ nodeExporter:
 
 pushgateway:
   enabled: false
-
-server:
-  remoteWrite:
-    - url: "${prometheusRemoteUrl}"
-      basic_auth:
-        username: "${prometheusRemoteUsername}"
-        password: "${prometheusRemotePassword}"
