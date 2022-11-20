@@ -17,13 +17,13 @@ data "akeyless_static_secret" "prometheus_remote_password" {
 module "promtail" {
   source = "../../modules/promtail"
 
-  lokiRemoteUrl = data.akeyless_static_secret.promtail_remote_url
+  lokiRemoteUrl = data.akeyless_static_secret.promtail_remote_url.value
 }
 
 module "prometheus" {
   source = "../../modules/prometheus"
 
-  prometheusRemoteUrl      = data.akeyless_static_secret.prometheus_remote_url
-  prometheusRemoteUsername = data.akeyless_static_secret.prometheus_remote_username
-  prometheusRemotePassword = data.akeyless_static_secret.prometheus_remote_password
+  prometheusRemoteUrl = data.akeyless_static_secret.prometheus_remote_url.value
+  prometheusRemoteUsername = data.akeyless_static_secret.prometheus_remote_username.value
+  prometheusRemotePassword = data.akeyless_static_secret.prometheus_remote_password.value
 }
