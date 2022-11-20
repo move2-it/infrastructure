@@ -4,10 +4,18 @@ terraform {
       source  = "akeyless-community/akeyless"
       version = "1.1.15"
     }
+    helm = {
+      source = "hashicorp/helm"
+      version = "2.7.1"
+    }
   }
-  helm = {
-    source = "hashicorp/helm"
-    version = "2.7.1"
+
+  cloud {
+    organization = "move2-it"
+
+    workspaces {
+      name = "move2-it"
+    }
   }
 }
 
