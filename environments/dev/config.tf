@@ -5,6 +5,10 @@ terraform {
       version = "1.1.15"
     }
   }
+  helm = {
+    source = "hashicorp/helm"
+    version = "2.7.1"
+  }
 }
 
 provider "akeyless" {
