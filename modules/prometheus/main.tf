@@ -26,4 +26,19 @@ resource "helm_release" "this" {
   values = [
     data.template_file.this.rendered
   ]
+
+  set_sensitive {
+    name  = "server.remoteWrite[0].url"
+    value = var.prometheusRemoteUrl
+  }
+
+  set_sensitive {
+    name  = "server.remoteWrite[0].basic_auth.username"
+    value = var.prometheusRemoteUsername
+  }
+
+  set_sensitive {
+    name  = "server.remoteWrite[0].basic_auth.password"
+    value = var.prometheusRemotePassword
+  }
 }
