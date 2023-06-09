@@ -1,5 +1,5 @@
 variable "kubernetes_url" {
-  type    = string
+  type = string
 }
 
 variable "akeyless_api_gateway_address" {

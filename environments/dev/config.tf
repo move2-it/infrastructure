@@ -26,7 +26,7 @@ provider "akeyless" {
 
 provider "helm" {
   kubernetes {
-    host = var.kubernetes_url
+    host     = var.kubernetes_url
     insecure = true
   }
 }
