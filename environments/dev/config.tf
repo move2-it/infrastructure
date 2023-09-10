@@ -23,10 +23,3 @@ provider "akeyless" {
     access_key = var.akeyless_access_key
   }
 }
-
-provider "helm" {
-  kubernetes {
-    host     = var.kubernetes_url
-    insecure = true
-  }
-}
