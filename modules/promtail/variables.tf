@@ -1,3 +1,0 @@
-variable "lokiRemoteUrl" {
-  type = string
-}
