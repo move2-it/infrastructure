@@ -1,0 +1,248 @@
+query server($id: String!) {
+    server(id: $id) {
+        ...serverFields
+        verifiedDomains
+        isGithubRepoEmpty
+        __typename
+    }
+}
+
+fragment serverFields on Server {
+    ...serviceFields
+    autoscalingConfig {
+        enabled
+        min
+        max
+        cpuPercentage
+        cpuEnabled
+        memoryPercentage
+        memoryEnabled
+        __typename
+    }
+    deletedAt
+    deploy {
+        ...deployFields
+        __typename
+    }
+    deployKey
+    externalImage {
+        ...externalImageFields
+        __typename
+    }
+    extraInstances
+    healthCheckHost
+    healthCheckPath
+    isPrivate
+    isWorker
+    openPorts
+    maintenanceScheduledAt
+    parentServer {
+        ...serviceFields
+        __typename
+    }
+    pendingMaintenanceBy
+    plan {
+        name
+        cpu
+        mem
+        price
+        __typename
+    }
+    prPreviewsEnabled
+    preDeployCommand
+    pullRequestId
+    rootDir
+    startCommand
+    staticPublishPath
+    suspenders
+    url
+    disk {
+        ...diskFields
+        __typename
+    }
+    maintenance {
+        id
+        type
+        scheduledAt
+        pendingMaintenanceBy
+        state
+        __typename
+    }
+    __typename
+}
+
+fragment serviceFields on Service {
+    id
+    type
+    env {
+        ...envFields
+        __typename
+    }
+    repo {
+        ...repoFields
+        __typename
+    }
+    user {
+        id
+        email
+        __typename
+    }
+    owner {
+        id
+        email
+        billingStatus
+        featureFlags
+        __typename
+    }
+    name
+    slug
+    sourceBranch
+    buildCommand
+    buildFilter {
+        paths
+        ignoredPaths
+        __typename
+    }
+    buildPlan {
+        name
+        cpu
+        mem
+        __typename
+    }
+    externalImage {
+        ...externalImageFields
+        __typename
+    }
+    autoDeploy
+    notifyOnFail
+    userFacingType
+    userFacingTypeSlug
+    baseDir
+    dockerCommand
+    dockerfilePath
+    createdAt
+    updatedAt
+    outboundIPs
+    region {
+        id
+        description
+        __typename
+    }
+    rootDir
+    shellURL
+    state
+    suspenders
+    sshAddress
+    sshServiceAvailable
+    lastDeployedAt
+    maintenanceScheduledAt
+    pendingMaintenanceBy
+    environment {
+        ...environmentFields
+        __typename
+    }
+    __typename
+}
+
+fragment envFields on Env {
+    id
+    name
+    language
+    isStatic
+    sampleBuildCommand
+    sampleStartCommand
+    __typename
+}
+
+fragment environmentFields on Environment {
+    id
+    name
+    project {
+        id
+        name
+        owner {
+            id
+            __typename
+        }
+        __typename
+    }
+    __typename
+}
+
+fragment repoFields on Repo {
+    id
+    provider
+    providerId
+    name
+    ownerName
+    webURL
+    isPrivate
+    __typename
+}
+
+fragment externalImageFields on ExternalImage {
+    imageHost
+    imageName
+    imageRef
+    imageRepository
+    imageURL
+    ownerId
+    registryCredentialId
+    __typename
+}
+
+fragment deployFields on Deploy {
+    id
+    status
+    buildId
+    commitId
+    commitShortId
+    commitMessage
+    commitURL
+    commitCreatedAt
+    finishedAt
+    finishedAtUnixNano
+    initialDeployHookFinishedAtUnixNano
+    createdAt
+    updatedAt
+    server {
+        id
+        userFacingTypeSlug
+        __typename
+    }
+    rollbackSupportStatus
+    reason {
+        ...failureReasonFields
+        __typename
+    }
+    imageSHA
+    externalImage {
+        imageRef
+        __typename
+    }
+    __typename
+}
+
+fragment failureReasonFields on FailureReason {
+    badStartCommand
+    evicted
+    evictionReason
+    nonZeroExit
+    oomKilled {
+        memoryLimit
+        __typename
+    }
+    rootDirMissing
+    timedOutSeconds
+    unhealthy
+    step
+    __typename
+}
+
+fragment diskFields on Disk {
+    id
+    name
+    mountPath
+    sizeGB
+    __typename
+}

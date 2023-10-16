@@ -1,0 +1,3 @@
+mutation deleteServer($id: String!) {
+    deleteServer(id: $id)
+}

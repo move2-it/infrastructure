@@ -1,0 +1,36 @@
+mutation signIn($email: String!, $password: String!) {
+    signIn(email: $email, password: $password) {
+        ...authResultFields
+        __typename
+    }
+}
+
+fragment authResultFields on AuthResult {
+    idToken
+    expiresAt
+    user {
+        ...userFields
+        sudoModeExpiresAt
+        __typename
+    }
+    readOnly
+    __typename
+}
+
+fragment userFields on User {
+    id
+    active
+    createdAt
+    email
+    featureFlags
+    githubId
+    gitlabId
+    name
+    notifyOnFail
+    notifyOnPrUpdate
+    otpEnabled
+    passwordExists
+    tosAcceptedAt
+    intercomEmailHMAC
+    __typename
+}
