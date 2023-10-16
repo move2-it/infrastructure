@@ -1,7 +1,3 @@
-variable "kubernetes_url" {
-  type = string
-}
-
 variable "akeyless_api_gateway_address" {
   type    = string
   default = "https://api.akeyless.io"
