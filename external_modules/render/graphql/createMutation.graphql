@@ -112,7 +112,6 @@ fragment serviceFields on Service {
     __typename
   }
   autoDeploy
-  notifyOnFail
   userFacingType
   userFacingTypeSlug
   baseDir
